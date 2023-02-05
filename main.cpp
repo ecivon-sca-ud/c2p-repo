@@ -10,7 +10,7 @@ using namespace std;
 
 void play_game()
 {
- int random=rand() % 252;
+ int random=rand() % 251;
  cout<<random<<endl;
  cout<<"Guess a number"<<endl;
  while(true)
