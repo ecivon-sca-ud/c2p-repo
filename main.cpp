@@ -6,15 +6,15 @@
 #include <ctime>
 #include <cstdlib>
 #include <vector>
-
+#include <array>
 
 using namespace std;
 
-void print_vector(vector<int>vector)
+void print_array(array<int,251>array, int size)
 {
-  for (int k=0;k<vector.size();k++)
+  for (int k=0;k<size;k++)
   {
-  	cout<<vector[k]<<"\t";
+  	cout<<array[k]<<"\t";
   }
   cout<<endl;
 }
@@ -22,8 +22,8 @@ void print_vector(vector<int>vector)
 
 void play_game()
 {
- vector <int> guesses;
- 
+ array <int,251> guesses;
+ int guess_count=0;
  
  int random=rand() % 251;
  cout<<random<<endl;
@@ -32,11 +32,13 @@ void play_game()
  {
   int guess;
   cin>>guess;
-  guesses.push_back(guess);
+  guesses[guess_count++]=guess;
   
   if (guess==random)
     { 
       cout<<endl<<endl;
+      cout<<guess_count<<" guesses taken."<<endl; 
+      cout<<endl;
       cout<<"Nice you got the number right!"<<endl<<"Wanna play again or nah?"<<endl;
       break;
 	}
@@ -49,7 +51,7 @@ void play_game()
   	  cout<<"Sorry your guess was higher than the expected number."<<endl<<"Please try again."<<endl;
     }
  }
- print_vector(guesses);
+ print_array(guesses,guess_count);
 	
 	  	
 	
