@@ -8,14 +8,16 @@ using namespace std;
 
 
 int main()
-{
-  string start;
-  cout<<"Type the word start to get a list of numbers 1 to 100, but with a twist:"<<endl;
+{ 
+  int start;
+  do
+  {
+  cout<<"Type 0 to get a list of numbers 1 to 100, but with a twist:"<<endl;
   cout<<"Those divisible by 3 will be replaced by KOKO.\nThose divisible by 5 will be replaced by RIKO.Those divisible by 15 will be replaced by KOKO RIKO."<<endl;
-  getline(cin,start);
+  cin>>start;
 
 
-   if(start=="start"|| start=="Start"||start=="START")
+   if(start==0)
    {
       cout<<"Nice! Check below"<<endl;
       for (int i=1;i<101;i++)
@@ -41,9 +43,12 @@ int main()
    }
    else
    {
-     cout<<"Man,write start!"<<endl;
+    cout<<"Man,type zero!\nTry again..."<<endl;
+   		
+	}
+     
 
-   }
+   } while(start=!0);
 
 
 
@@ -53,9 +58,3 @@ int main()
 
 
 }
-
-
-
-
-
-
