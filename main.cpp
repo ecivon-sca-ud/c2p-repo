@@ -34,12 +34,14 @@ int main()
          {
            cout<<"KOKO"<<endl;
          }
+        
            else
        {
             cout<<i<<endl;
-       }
+       } 
 
       }
+      break;
    }
    else
    {
