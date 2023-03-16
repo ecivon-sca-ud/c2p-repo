@@ -1,118 +1,91 @@
 #include <iostream>
-#include <climits>
-#include<cmath>
-#include <float.h>
+#include<math.h>
 #include <string>
-#include <ctime>
-#include <cstdlib>
 #include <vector>
-#include <fstream>
 
 
 using namespace std;
 
-void print_vector(vector<int>vector)
+class Student
 {
-  for (int k=0;k<vector.size();k++)
-  {
-  	cout<<vector[k]<<"\t";
-  }
-  cout<<endl;
-}
+private:
+    string name;
+    int age;
+public:
+    Student()
+    {
+
+    }
+   void setData(string n,int a)
+    {
+        name=n;
+        age=a;
+    }
+    void Display()
+    {
+        cout<<"Name: " <<name<<endl;
+        cout<<"Age:    "<<age<<endl;
+    }
+    /*void DisplayName()
+    {
+        cout<<"Name: " <<name<<endl;
+    }*/
+
+    int getAge()
+    {
+        return age;
+    }
 
 
-void play_game()
+
+
+};
+
+
+int main()
 {
- vector <int> guesses;
- int count=0;
- 
- 
- int random=rand() % 251;
- cout<<random<<endl;
- cout<<"Guess a number"<<endl;
- while(true)
- {
-  int guess;
-  cin>>guess;
-  count++;     //Used to keep track of number of guesses from each round. Best used with a file that stores this, as will soon be seen.
-  
-  guesses.push_back(guess);
-  
-  if (guess==random)
-    { 
-      cout<<endl<<endl;
-      cout<<"Nice you got the number right!"<<endl<<"Wanna play again or nah?"<<endl;
-      break;
-	}
-  else if (guess<random)
+    int num;
+    int sum=0;
+    string name;
+    int age;
+    cout<<"How many students are we working with?"<<endl;
+    cin>>num;
+    Student student[num];
+
+    for (int i=1;i<=num;i++)
     {
-  	  cout<<"Sorry your guess was lower than the expected number."<<endl<<"Please try again."<<endl;
+        cout<<"Name?"<<endl;
+        cin>>name;
+        cout<<"Age?"<<endl;
+        cin>>age;
+        sum=sum+age;
+        student[i].setData(name,age);
     }
-  else 
+
+    for (int j=1;j<=num;j++)
     {
-  	  cout<<"Sorry your guess was higher than the expected number."<<endl<<"Please try again."<<endl;
+        student[j].Display();
     }
- }
-   std::fstream input("Best Scores.txt");
-   
-   int best_score;
-   input>>best_score;
-   
-   std::fstream output("Best Scores.txt");
-   if(!output.is_open())
-   {
-   	cout<<"Unable to read from file"<<endl;
-   }
-   
-   if(count<best_score)
-   {
-   	output<<endl;
-   	output<<count<<endl;
-   }
-   else
-   {
-   	output<<endl;
-   	output<<best_score<<endl;
-   }
- 
- 
- 
+    //cout<<sum<<endl;
 
-	
-	  	
-  print_vector(guesses);	
+   for (int k=1;k<=num;k++)
+   {
+       sum=sum+age;
+   }
+    cout<<"Average age= "<<(double)sum/num<<endl;
+
+
+
+
+
+
+
+
 }
- 
- 
-  
 
-int main(int argc, char** argv) 
-{   
 
-	
-	
-  srand(time(NULL));
-  int choix;
-  do
-	{
-  cout<<"0.Quit"<<endl<<"1.Play Game"<<endl;
-  cin>>choix;
-  switch(choix)
-		{
- 		 case 0:
-  		cout<<"So sad to see you end the game.\nAnyway, see you next time and thanks for playing."<<endl;
-  		break;
-  		case 1:
-  		play_game();
-  		break;
-  		default:
-  		cout<<"Man, you had one job smh.\nPlease pick 1 or 0 this time, okay?"<<endl;	
-  		break;
-		} 
 
-	}while(choix!=0); 
-	
-	
-	
-}
+
+
+
 
