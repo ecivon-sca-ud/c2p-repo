@@ -1,59 +1,67 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
-class Student
+class Supermarket
 {
-    string name;
-    int age;
+    string product;
+    double cost;
     public:
-      setData(string n, int a)
+    void setData(string p,double co )
 	{
-        name=n;
-        age=a;
+        product=p;
+        cost=co;
     }
-    void display()
+   
+    double getCost()
 	{
-        cout<<"Name:"<<name<<endl;
-        cout<<"Age: "<<age<<endl;
+        return cost;
     }
-    void displayName()
+    void showProd()
 	{
-        cout<<"Name:"<<name<<endl;
-    }
-    int getAge()
-	{
-        return age;
-    }
-    void getRow()
-	{
-        cout<<name<<"\t"<<age<<endl;
+        cout<<"\t\t\t\t"<<product<<"\t\t\t"<<cost<<endl;
     }
 };
 int main()
 {
    int num;
-   int sum=0;
-   cout<<"Enter the number of students"<<endl;
+   double sum=0;
+   string cashier_name;
+   cout<<"Before we begin, let us get the cashier's name."<<endl;
+   getline(cin,cashier_name);
+   
+   cout<<"To the customer...\nHow many things do you wish to buy?"<<endl;
    cin>>num;
-  Student s[num];
+   Supermarket s[num];
 
-  for(int i=0;i<num;i++){
-    string name;
-  int age;
-  cout<<"Enter name"<<endl;
-  cin>>name;
-  cout<<"Enter age"<<endl;
-  cin>>age;
-    s[i].setData(name, age);
-    }
-    cout<<"NAIVAS"<<endl;
-    cout<<"Number of Products"<<num<<endl;
-   for (int j=0;j<num;j++){
-    s[j].getRow();
-    sum=sum+s[j].getAge();
+   for(int i=0;i<num;i++)
+   {
+    string produit;
+  	double price;
+	cout<<"Enter name of product# "<<i+1<<endl;
+	cin>>produit;
+	cout<<"How much is said product?"<<endl;
+	cin>>price;
+	s[i].setData(produit,price);
+   }
+   
+    cout<<"\t\t\t\t"<<"_________________________________"<<endl;
+	cout<<"\t\t\t\t\t"<<"NAIVAS SUPERMARKET"<<endl;
+	cout<<"\t\t\t\t"<<"_________________________________"<<endl;
+	cout<<"\t\t\t\t"<<"*********************************"<<endl;
+    cout<<"\t\t\t\t"<<"Number of Products"<<"\t"<<num<<endl;
+    cout<<"\t\t\t\t"<<"Product Name"<<"\t\t"<<"Price(Ksh)"<<endl;
+   for (int j=0;j<num;j++)
+   {
+    s[j].showProd();
+    sum=sum+s[j].getCost();
 
    }
-    cout<<"Total"<<"\t"<<sum<<endl;
-    cout<<"Served by Jack"<<endl;
-    cout<<"******"<<endl;
+    cout<<endl;
+    cout<<"\t\t\t\t"<<"Total"<<"\t\t\t"<<sum<<endl;
+    cout<<"\t\t\t\t"<<"Served by "<<cashier_name<<endl;
+    cout<<"\t\t\t\t"<<"_________________________________"<<endl;
+    cout<<"\t\t\t\t"<<"*********************************"<<endl;
+    cout<<"\t\t\t\t"<<"_________________________________"<<endl;
 return 0;
 }
