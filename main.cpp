@@ -1,61 +1,59 @@
 #include <iostream>
 #include <string>
-
-#define pi 3.141592654
+#include <math.h>
 
 using namespace std;
 
-class Shape
- {
-protected:
-     double area;
- } ;
+#define pi 3.14195
 
- class  Circle : protected Shape
- {
- private:
-    double radius,circumference;
-public:
-     void getCCalc()
-     {
-            cout<<"Enter radius in cm."<<endl;
-            cin>>radius;
-            area=pi*radius*radius;
-            circumference=2*pi*radius;
-     }
-     void setCCalc()
-     {
-            cout<<"Circle's circumference= "<<circumference<<"  cm."<<endl;
-            cout<<"Circle's area= "<<area<<" squared cm."<<endl;
-     }
+void CircArea (double radius)
+{
+	cout<<"The circle's area is "<<pi*radius*radius<<" squared cm.";
+}
 
-
- };
-
- class Square : protected Shape
- {
-private:
-     double s_side;
-public:
-     void getSArea()
-     {
-         cout<<"Enter square's length in cm"<<endl;
-         cin>>s_side;
-         area=s_side*s_side;
-     }
-     void setSArea()
-     {
-         cout<<"Square's area="<<area<<" squared cm."<<endl;
-     }
- };
+void CircArea (double x1,double y1,double x2,double y2)
+{	double radrad= pow((x2-x1),2)+pow((y2-y1),2);
+	cout<<"The circle's radius is "<<sqrt(radrad)<<"  cm."<<endl;
+	cout<<"The circle's area is "<<pi*sqrt(radrad)*sqrt(radrad)<<" squared cm.";
+}
 
 
 int main()
-{
-        Circle circ1;
-        circ1.getCCalc();
-        circ1.setCCalc();
-        Square sq1;
-        sq1.getSArea();
-        sq1.setSArea();
+{ string choix;
+  cout<<"Yo you're in a circle's area calculator.\n";
+  cout<<"Enter \"Coordinates\" if you wanna calculate a graphically drawn circle.\n";
+  cout<< " Else enter \"Radius\" if you're entering the radius more directly."<<endl;
+  getline(cin,choix);
+  if(choix=="coordinates"||choix=="Coordinates")
+  {
+  	double x1,x2,y1,y2;
+  	cout<<"Enter x-coordinate of centre."<<endl;
+  	cin>>x1;
+  	cout<<"Enter y-coordinate of centre."<<endl;
+  	cin>>y1;
+  	cout<<"Enter x-coordinate of any point on the circle."<<endl;
+  	cin>>x2;
+  	cout<<"And finally, enter y-coordinate of the random point you just chose."<<endl;
+  	cin>>y2;
+  	CircArea(x1,y1,x2,y2);
+  }
+  else if (choix=="Radius"||choix=="radius")
+  {
+  	double radius;
+  cout<<"Enter radius of circle in cm to get area."<<endl;
+  cin>>radius;
+  CircArea(radius);	
+  }
+  else
+  {
+  	cout<<"Unaandika nini wewe?\nStart over!"<<endl;
+  }
+  
+   
 }
+
+
+
+
+
+
